@@ -1,0 +1,78 @@
+openapi: 3.0.0
+
+info:
+  title: Spec for CardioVascularDetection API
+  version: '1'
+
+servers:
+- url: http://{base}:5000/
+  description: API for performing prediction of cardio vascular diseases.
+  variables:
+    base:
+      default: 0.0.0.0
+
+paths:
+  /:
+    get:
+      operationId: api.controller.health
+      responses:
+        '200':
+          description: API Health Status
+
+  /v1/predictions/predict:
+    post:
+      operationId: api.controller.predict
+      requestBody:
+        description: person details to find if he/she has cardio vascular disease
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PersonDetails'
+      responses:
+        '200':
+          description: Cardio Vascular Disease Predictions
+        '400':
+          description: Bad request, Cardio Vascular Disease data validation failed
+        '5XX':
+          description: Unexpected error
+
+  /v1/predictions/gradient:
+    post:
+      operationId: api.controller.predict_previous
+      requestBody:
+        description: person details to find if he/she has cardio vascular disease
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/PersonDetails'
+      responses:
+        '200':
+          description: Cardio Vascular Disease Predictions
+        '400':
+          description: Bad request, Cardio Vascular Disease validation failed
+        '5XX':
+          description: Unexpected error
+
+components:
+  schemas:
+    PersonDetails:
+      type: object
+      description: "Persion Details to get predictions for."
+      example:
+        age: 10950
+        gender: 1
+        height: 165
+        weight: 120
+        active: 0
+        ap_hi: 175
+        ap_lo: 80
+        alco: 1
+        smoke: 0
+        gluc: 3
+        cholesterol: 3

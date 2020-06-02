@@ -1,0 +1,74 @@
+# Package Overview
+package_name: cvd_model
+
+# Data Files
+training_data_file: train.csv
+test_data_file: test.csv
+
+# this variable is to calculate the temporal variable
+# but is dropped prior to model training.
+drop_features: id
+
+pipeline_name: catboost
+pipeline_save_file: catboost_output_v
+
+# Variables
+# The variable we are attempting to predict (cardio disease)
+target: cardio
+
+features:
+  - age
+  - gender
+  - height
+  - weight
+  - active
+  - gluc
+  - alco
+  - ap_hi
+  - ap_lo
+  - cholesterol
+  - smoke
+
+numerical_vars:
+  - age
+  - gender
+  - height
+  - weight
+  - active
+  - gluc
+  - alco
+  - ap_hi
+  - ap_lo
+  - cholesterol
+  - smoke
+  
+
+numerical_na_not_allowed:
+  - age
+  - gender
+  - height
+  - weight
+  - active
+  - gluc
+  - alco
+  - ap_hi
+  - ap_lo
+  - cholesterol
+  - smoke
+    
+# set train/test split
+test_size: 0.3
+
+# to set the random seed
+random_state: 0
+
+ohe_feature: gender
+
+jamesstien_encoding:
+  - bmi_category
+  - blood_pressure_level
+  - age
+
+discretize_variables: age
+
+

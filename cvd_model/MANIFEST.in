@@ -1,0 +1,18 @@
+include *.txt
+include *.md
+include *.pkl
+recursive-include ./cvd_model/*
+
+include cvd_model/datasets/train.csv
+include cvd_model/datasets/test.csv
+include cvd_model/trained_models/*.pkl
+include cvd_model/pretrained_model/*.pkl
+include cvd_model/VERSION
+include cvd_model/config.yml
+
+include ./requirements.txt
+exclude *.log
+exclude *.cfg
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
