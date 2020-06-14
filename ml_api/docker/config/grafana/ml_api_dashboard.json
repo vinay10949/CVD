@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 10,
+  "id": 1,
   "links": [],
   "panels": [
     {
@@ -71,7 +71,7 @@
       ],
       "targets": [
         {
-          "expr": "count by(live_model, live_version, shadow_model, shadow_version, version)(model_version_details_info\n* on (instance, job) group_left(version)\npython_info)",
+          "expr": "count by(live_model, live_version, version)(model_version_details_info\n* on (instance, job) group_left(version)\npython_info)",
           "format": "table",
           "legendFormat": "{{model_version}}",
           "refId": "A"
@@ -317,7 +317,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.0.0",
       "targets": [
         {
           "expr": "rate(cardio_vascular_disease_negative[10m])/rate(no_of_patients_total[10m])*100",
@@ -377,10 +377,12 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.0.1",
+      "pluginVersion": "7.0.0",
       "targets": [
         {
           "expr": "rate(cardio_vascular_disease_positive[10m])/rate(no_of_patients_total[10m])*100",
+          "instant": true,
+          "interval": "",
           "legendFormat": "Cardio Disease Prediction Probablity",
           "refId": "A"
         }
@@ -391,6 +393,7 @@
       "type": "gauge"
     }
   ],
+  "refresh": "",
   "schemaVersion": 25,
   "style": "dark",
   "tags": [],
@@ -415,7 +418,7 @@
     ]
   },
   "timezone": "",
-  "title": "ML API Dashboard",
+  "title": "Dashboard",
   "uid": "q8vgEpLZk",
-  "version": 2
+  "version": 4
 }
